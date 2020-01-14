@@ -25,4 +25,5 @@ public class ModBlocks
     //public static final FlaxCropBlock FLAX_CROP = null;
     // same as first FLAX_CROP
     //without annotation: crashed
+    
 }
