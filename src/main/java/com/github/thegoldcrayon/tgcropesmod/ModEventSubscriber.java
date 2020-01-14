@@ -1,4 +1,4 @@
-package com.github.thegoldcrayon.tgcropesmod;
+/*package com.github.thegoldcrayon.tgcropesmod;
 
 import com.github.thegoldcrayon.tgcropesmod.block.FlaxCropBlock;
 import com.github.thegoldcrayon.tgcropesmod.block.RopeBlock;
@@ -92,3 +92,4 @@ public class ModEventSubscriber
         return entry;
     }
 }
+*/

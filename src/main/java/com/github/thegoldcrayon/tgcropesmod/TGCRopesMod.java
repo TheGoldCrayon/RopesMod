@@ -1,5 +1,6 @@
 package com.github.thegoldcrayon.tgcropesmod;
 
+import com.github.thegoldcrayon.tgcropesmod.init.ModRegistry;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
@@ -9,12 +10,12 @@ import org.apache.logging.log4j.Logger;
 public class TGCRopesMod
 {
     public static final String MODID = "tgcropesmod";
-
     public static final Logger LOGGER = LogManager.getLogger();
 
     public TGCRopesMod()
     {
         LOGGER.debug("Hello from the Ropes Mod!");
-    }
 
+        ModRegistry.register();
+    }
 }

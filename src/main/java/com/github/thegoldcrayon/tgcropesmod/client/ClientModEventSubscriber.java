@@ -24,8 +24,8 @@ public class ClientModEventSubscriber
         //Misc. Renders
         RenderType rendertype1 = RenderType.func_228643_e_();
 
-        RenderTypeLookup.setRenderLayer(ModBlocks.ROPE, rendertype1);
-        RenderTypeLookup.setRenderLayer(ModBlocks.FLAX_CROP, rendertype1);
+        //RenderTypeLookup.setRenderLayer(ModBlocks.ROPE, rendertype1);
+        //RenderTypeLookup.setRenderLayer(ModBlocks.FLAX_CROP, rendertype1);
         LOGGER.debug("Completed Misc. Renders");
     }
 }
