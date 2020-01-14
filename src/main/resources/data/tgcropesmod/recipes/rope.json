@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T",
+    "T",
+    "T"
+  ],
+  "key": {
+    "T": {
+      "item": "tgcropesmod:fresh_flax"
+    }
+  },
+  "result": {
+    "item": "tgcropesmod:rope",
+    "count": 2
+  }
+}

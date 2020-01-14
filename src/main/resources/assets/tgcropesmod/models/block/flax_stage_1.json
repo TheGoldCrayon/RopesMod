@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "tgcropesmod:block/flax_stage_1"
+  }
+}
