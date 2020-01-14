@@ -73,7 +73,7 @@ public class RopeBlock extends LadderBlock
         Item heldItem = heldItemStack.getItem();
         Item rope = ModBlocks.ROPE.asItem();
 
-        LOGGER.debug(heldItemStack);
+        //LOGGER.debug(heldItemStack);
         if(heldItem == rope)
         {
             Boolean isRope = true;
