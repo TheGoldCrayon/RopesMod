@@ -2,7 +2,6 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "T",
-    "T",
     "T"
   ],
   "key": {
@@ -11,7 +10,7 @@
     }
   },
   "result": {
-    "item": "tgcropesmod:rope",
+    "item": "minecraft:string",
     "count": 2
   }
 }
