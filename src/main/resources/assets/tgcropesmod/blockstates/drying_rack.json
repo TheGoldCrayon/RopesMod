@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "tgcropesmod:block/drying_rack"},
+    "facing=south": {"model": "tgcropesmod:block/drying_rack", "y": 180},
+    "facing=west": {"model": "tgcropesmod:block/drying_rack", "y": 270},
+    "facing=east": {"model": "tgcropesmod:block/drying_rack", "y": 90}
+  }
+}

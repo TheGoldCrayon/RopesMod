@@ -4,6 +4,7 @@ import com.github.thegoldcrayon.tgcropesmod.TGCRopesMod;
 import com.github.thegoldcrayon.tgcropesmod.init.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,6 +13,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -102,5 +104,18 @@ public class RopeBlock extends LadderBlock
         }
         else
             return ActionResultType.FAIL;
+    }
+
+    @Override
+    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
+    {
+        Vec3d playerVector = entityIn.getMotion();
+        double playerX = playerVector.getX();
+        double playerY = playerVector.getY();
+        double playerZ = playerVector.getZ();
+
+        entityIn.setMotion(playerX, playerY * 1.5, playerZ);
+
+        LOGGER.debug("x: " + playerX + " y: " + playerY + " z: " + playerZ);
     }
 }
