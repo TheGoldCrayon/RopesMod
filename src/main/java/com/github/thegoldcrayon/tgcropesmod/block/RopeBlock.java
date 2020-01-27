@@ -69,7 +69,7 @@ public class RopeBlock extends LadderBlock
     }
 
     @Override
-    public ActionResultType func_225533_a_(BlockState blockState, World worldIn, BlockPos blockPos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult rayTraceResult)
+    public ActionResultType onBlockActivated(BlockState blockState, World worldIn, BlockPos blockPos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult rayTraceResult)
     {
         ItemStack heldItemStack = playerEntity.getHeldItem(hand);
         Item heldItem = heldItemStack.getItem();
@@ -106,7 +106,7 @@ public class RopeBlock extends LadderBlock
             return ActionResultType.FAIL;
     }
 
-    @Override
+    /*@Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
     {
         Vec3d playerVector = entityIn.getMotion();
@@ -117,5 +117,5 @@ public class RopeBlock extends LadderBlock
         entityIn.setMotion(playerX, playerY * 1.5, playerZ);
 
         LOGGER.debug("x: " + playerX + " y: " + playerY + " z: " + playerZ);
-    }
+    }*/
 }

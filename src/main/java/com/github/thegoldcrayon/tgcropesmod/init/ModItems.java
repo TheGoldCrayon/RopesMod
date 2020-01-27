@@ -7,7 +7,9 @@ import net.minecraftforge.registries.ObjectHolder;
 @ObjectHolder(TGCRopesMod.MODID)
 public class ModItems
 {
-    public static final Item FLAX_SEEDS = null;
-    public static final Item DRY_FLAX = null;
-    public static final Item FRESH_FLAX = null;
+    @ObjectHolder("flax_seeds")
+    public static Item FLAX_SEEDS;
+
+    @ObjectHolder("fresh_flax")
+    public static Item FRESH_FLAX;
 }

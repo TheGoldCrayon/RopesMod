@@ -19,12 +19,15 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
 
 public class DryingRackBlock extends HorizontalBlock
 {
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public DryingRackBlock()
     {
@@ -32,7 +35,7 @@ public class DryingRackBlock extends HorizontalBlock
                 .create(Material.WOOD)
                 .sound(SoundType.WOOD)
                 .hardnessAndResistance(5.0f)
-                .func_226896_b_()
+                .notSolid()
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
@@ -51,6 +54,7 @@ public class DryingRackBlock extends HorizontalBlock
     @Override
     public boolean hasTileEntity(final BlockState state)
     {
+        LOGGER.debug("Test 1");
         return true;
     }
 
@@ -58,11 +62,12 @@ public class DryingRackBlock extends HorizontalBlock
     @Override
     public TileEntity createTileEntity(final BlockState state, final IBlockReader world)
     {
-        return ModRegistry.DRYING_RACK_TILE_ENTITY_TYPE.get().create();
+        LOGGER.debug("Test 2");
+        return new DryingRackTileEntity();
     }
 
     @Override
-    public ActionResultType func_225533_a_(final BlockState state, final World worldIn, final BlockPos pos, final PlayerEntity player, final Hand handIn, final BlockRayTraceResult hit)
+    public ActionResultType onBlockActivated(final BlockState state, final World worldIn, final BlockPos pos, final PlayerEntity player, final Hand handIn, final BlockRayTraceResult hit)
     {
         if(!worldIn.isRemote)
         {
