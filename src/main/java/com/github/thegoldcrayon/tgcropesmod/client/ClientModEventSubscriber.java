@@ -1,7 +1,10 @@
 package com.github.thegoldcrayon.tgcropesmod.client;
 
 import com.github.thegoldcrayon.tgcropesmod.TGCRopesMod;
+import com.github.thegoldcrayon.tgcropesmod.client.gui.DryingRackScreen;
 import com.github.thegoldcrayon.tgcropesmod.init.ModBlocks;
+import com.github.thegoldcrayon.tgcropesmod.init.ModRegistry;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,5 +30,9 @@ public class ClientModEventSubscriber
         RenderTypeLookup.setRenderLayer(ModBlocks.ROPE, rendertype1);
         RenderTypeLookup.setRenderLayer(ModBlocks.FLAX_CROP, rendertype1);
         LOGGER.debug("Completed Misc. Renders");
+
+        //Container Screens
+        ScreenManager.registerFactory(ModRegistry.DRYING_RACK_CONTAINER_TYPE.get(), DryingRackScreen::new);
+        LOGGER.debug("Completed Screen Renders");
     }
 }

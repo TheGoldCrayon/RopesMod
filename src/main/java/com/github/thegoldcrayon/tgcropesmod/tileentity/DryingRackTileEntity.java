@@ -19,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class DryingRackTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider
 {
@@ -28,7 +29,7 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
     public static final int OUTPUT_SLOT = 1;
     public static final int TIME_TO_DRY = 400;
 
-    public static int drying_time_left = -1;
+    public static int dryingTimeLeft = -1;
 
     public final ItemStackHandler inventory = new ItemStackHandler(2)
     {
@@ -38,11 +39,15 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
             switch(slot)
             {
                 case INPUT_SLOT:
+                {
                     return isInput(stack);
+                }
                 case OUTPUT_SLOT:
                     return isOutput(stack);
                 default:
+                {
                     return false;
+                }
             }
         }
 
@@ -57,7 +62,11 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
     public DryingRackTileEntity()
     {
         super(ModTileEntityTypes.DRYING_RACK_TILE_ENTITY_TYPE);
-        LOGGER.debug("Test 3");
+    }
+
+    public DryingRackTileEntity(TileEntityType type)
+    {
+        super(type);
     }
 
     @Override
@@ -76,43 +85,63 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
     @Override
     public void tick()
     {
-        LOGGER.debug("Test 4");
-
-        /*if(world == null || world.isRemote)
+        if(world == null || world.isRemote)
             return;
 
-        final ItemStack input = new ItemStack(ModRegistry.FRESH_FLAX.get());
-        final ItemStack output = new ItemStack(ModRegistry.DRY_FLAX.get());
+        final ItemStack input = inventory.getStackInSlot(INPUT_SLOT);
+        final ItemStack result = getResult(input);
 
-        if(drying_time_left == -1)
-            drying_time_left = TIME_TO_DRY;
-
-        if(drying_time_left < 0)
-            drying_time_left--;
-
-        if(drying_time_left == 0)
+        if(!result.isEmpty() && isInput(input))
         {
-            inventory.insertItem(OUTPUT_SLOT, output, false);
-            input.shrink(1);
-            drying_time_left = -1;
+            final boolean canInsertResultIntoOutput = inventory.insertItem(OUTPUT_SLOT, result, true).isEmpty();
+            if(canInsertResultIntoOutput)
+            {
+                if(dryingTimeLeft == -1)
+                    dryingTimeLeft = TIME_TO_DRY;
+
+                else if(dryingTimeLeft > 0)
+                {
+                    dryingTimeLeft--;
+                    if(dryingTimeLeft == 0)
+                    {
+                        inventory.insertItem(OUTPUT_SLOT, result, false);
+                        input.shrink(1);
+                        dryingTimeLeft = -1;
+                    }
+                }
+            }
         }
 
-        this.markDirty();*/
+        this.markDirty();
     }
 
     private boolean isInput(ItemStack stack)
     {
-        if(stack == new ItemStack(ModRegistry.FRESH_FLAX.get()))
+        if(stack.getItem() == ModRegistry.FRESH_FLAX.get())
+        {
+            LOGGER.debug(stack + " is a valid input.");
+            return true;
+        }
+        else
+        {
+            LOGGER.debug(stack + " is an invalid input.");
+            return false;
+        }
+    }
+
+    private boolean isOutput(ItemStack stack)
+    {
+        if(stack.getItem() == ModRegistry.DRY_FLAX.get())
             return true;
         else
             return false;
     }
 
-    private boolean isOutput(ItemStack stack)
+    private ItemStack getResult(final ItemStack input)
     {
-        if(stack == new ItemStack(ModRegistry.DRY_FLAX.get()))
-            return true;
+        if(input == new ItemStack(ModRegistry.FRESH_FLAX.get()))
+            return new ItemStack(ModRegistry.DRY_FLAX.get());
         else
-            return false;
+            return new ItemStack(null);
     }
 }

@@ -36,8 +36,8 @@ public class DryingRackContainer  extends Container
 
         //this.trackInt(new FunctionalIntReferenceHolder(() -> tileEntity.drying_time_left, v -> tileEntity.drying_time_left = (int) v));
 
-        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT, 100, 100));
-        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT, 120, 120));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT, 56, 35));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT, 116, 35));
 
         final int playerInventoryStartX = 8;
         final int playerInventoryStartY = 84;

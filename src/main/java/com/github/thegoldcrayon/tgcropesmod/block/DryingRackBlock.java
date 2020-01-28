@@ -1,12 +1,16 @@
 package com.github.thegoldcrayon.tgcropesmod.block;
 
 import com.github.thegoldcrayon.tgcropesmod.init.ModRegistry;
+import com.github.thegoldcrayon.tgcropesmod.init.ModTileEntityTypes;
 import com.github.thegoldcrayon.tgcropesmod.tileentity.DryingRackTileEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
@@ -19,6 +23,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.items.ItemStackHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,6 +45,25 @@ public class DryingRackBlock extends HorizontalBlock
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
 
+    @Override
+    public boolean hasTileEntity(final BlockState state)
+    {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(final BlockState state, final IBlockReader world)
+    {
+        return new DryingRackTileEntity();
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state)
+    {
+        return BlockRenderType.MODEL;
+    }
+
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
         return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
@@ -49,21 +73,6 @@ public class DryingRackBlock extends HorizontalBlock
     {
         super.fillStateContainer(builder);
         builder.add(FACING);
-    }
-
-    @Override
-    public boolean hasTileEntity(final BlockState state)
-    {
-        LOGGER.debug("Test 1");
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(final BlockState state, final IBlockReader world)
-    {
-        LOGGER.debug("Test 2");
-        return new DryingRackTileEntity();
     }
 
     @Override
@@ -77,6 +86,19 @@ public class DryingRackBlock extends HorizontalBlock
         }
         return ActionResultType.SUCCESS;
     }
+
+    /*@Override
+    public void onReplaced(BlockState oldState, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (oldState.getBlock() != newState.getBlock()) {
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+            if (tileEntity instanceof DryingRackTileEntity) {
+                final ItemStackHandler inventory = ((DryingRackTileEntity) tileEntity).inventory;
+                for (int slot = 0; slot < inventory.getSlots(); ++slot)
+                    InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(slot));
+            }
+        }
+        super.onReplaced(oldState, worldIn, pos, newState, isMoving);
+    }*/
 
     /*public BlockRenderType getRenderType(BlockState state)
     {

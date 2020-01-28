@@ -52,5 +52,7 @@ public class ModRegistry
     {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        CONTAINER_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 }
