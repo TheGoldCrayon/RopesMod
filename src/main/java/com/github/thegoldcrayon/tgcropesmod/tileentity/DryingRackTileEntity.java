@@ -113,20 +113,25 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
             final ItemStack input = inventory.getStackInSlot(slot);
             final ItemStack result = getResult(input);
 
-            if(isInput(input))
-            {
-                if(dryingTimeLeft[slot] == -1)
-                    dryingTimeLeft[slot] = TIME_TO_DRY;
-                else if(dryingTimeLeft[slot] > 0)
+            if(inventory.getStackInSlot(slot).isEmpty())
+                dryingTimeLeft[slot] = -1;
+            else
                 {
-                    dryingTimeLeft[slot]--;
-                    //LOGGER.debug("Tick tock in slot " + slot);
-                    if(dryingTimeLeft[slot] == 0)
+                if (isInput(input))
+                {
+                    if (dryingTimeLeft[slot] == -1)
+                        dryingTimeLeft[slot] = TIME_TO_DRY;
+                    else if (dryingTimeLeft[slot] > 0)
                     {
-                        input.shrink(1);
-                        inventory.insertItem(slot + 4, result, false);
-                        dryingTimeLeft[slot] = -1;
-                        //LOGGER.debug("Drying in slot " + slot + " is done");
+                        dryingTimeLeft[slot]--;
+                        //LOGGER.debug("Tick tock in slot " + slot);
+                        if (dryingTimeLeft[slot] == 0)
+                        {
+                            input.shrink(1);
+                            inventory.insertItem(slot + 4, result, false);
+                            dryingTimeLeft[slot] = -1;
+                            //LOGGER.debug("Drying in slot " + slot + " is done");
+                        }
                     }
                 }
             }
