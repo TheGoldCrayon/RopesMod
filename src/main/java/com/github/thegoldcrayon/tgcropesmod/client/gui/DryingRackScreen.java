@@ -7,10 +7,13 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
 {
     private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation("tgcropesmod", "textures/gui/container/drying_rack.png");
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public DryingRackScreen(DryingRackContainer container, PlayerInventory inventory, ITextComponent title)
     {
@@ -49,6 +52,7 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
         final DryingRackTileEntity tileEntity = container.tileEntity;
         for(int slot = 0; slot <= DryingRackTileEntity.INPUT_SLOT_4; slot++)
         {
+            LOGGER.debug(tileEntity.dryingTimeLeft[slot]);
             if(tileEntity.dryingTimeLeft[slot] > 0)
             {
                 int sunHeight = getDryingTimeScaled(slot);
@@ -62,8 +66,9 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
     private int getDryingTimeScaled(int slot)
     {
         final DryingRackTileEntity tileEntity = this.container.tileEntity;
-        final short dryingTimeLeft = (short)tileEntity.dryingTimeLeft[slot];
-        final short maxDryingTime = (short)tileEntity.TIME_TO_DRY;
+        final int dryingTimeLeft = tileEntity.dryingTimeLeft[slot];
+        final int maxDryingTime = tileEntity.TIME_TO_DRY;
+        LOGGER.debug(dryingTimeLeft);
         if (tileEntity.dryingTimeLeft[slot] <= 0)
             return 0;
         else

@@ -46,7 +46,7 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
 
     private static final String INVENTORY_TAG = "inventory";
 
-    public static int[] dryingTimeLeft = new int[]{-1, -1, -1, -1};
+    public int[] dryingTimeLeft = new int[]{-1, -1, -1, -1};
 
     public final ItemStackHandler inventory = new ItemStackHandler(8)
     {
@@ -124,7 +124,7 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
                     else if (dryingTimeLeft[slot] > 0)
                     {
                         dryingTimeLeft[slot]--;
-                        //LOGGER.debug("Tick tock in slot " + slot);
+                        LOGGER.debug("Tick tock in slot " + slot + " drying time left: " + dryingTimeLeft[slot]);
                         if (dryingTimeLeft[slot] == 0)
                         {
                             input.shrink(1);
@@ -136,30 +136,6 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
                 }
             }
         }
-
-        /*if(!result.isEmpty() && isInput(input))
-        {
-            final boolean canInsertResultIntoOutput = inventory.insertItem(OUTPUT_SLOT, result, true).isEmpty();
-            if(canInsertResultIntoOutput)
-            {
-                if(dryingTimeLeft == -1)
-                    dryingTimeLeft = TIME_TO_DRY;
-
-                else if(dryingTimeLeft > 0)
-                {
-                    dryingTimeLeft--;
-                    LOGGER.debug("Tick tock");
-                    if(dryingTimeLeft == 0)
-                    {
-                        inventory.insertItem(OUTPUT_SLOT, result, false);
-                        input.shrink(1);
-                        dryingTimeLeft = -1;
-                        LOGGER.debug("Drying done");
-                    }
-                }
-            }
-        }*/
-
         this.markDirty();
     }
     @Nonnull

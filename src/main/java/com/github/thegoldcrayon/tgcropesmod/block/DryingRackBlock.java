@@ -55,7 +55,7 @@ public class DryingRackBlock extends HorizontalBlock
     @Override
     public TileEntity createTileEntity(final BlockState state, final IBlockReader world)
     {
-        return new DryingRackTileEntity();
+        return ModRegistry.DRYING_RACK_TILE_ENTITY_TYPE.get().create();
     }
 
     @Override

@@ -41,9 +41,7 @@ public class DryingRackRenderer extends TileEntityRenderer<DryingRackTileEntity>
                 float yRotation = getRotation(facing);
                 Quaternion rot2 = Vector3f.YP.rotationDegrees(yRotation);
 
-                switch(slot)
-                {
-                    case 0:
+                    if(slot == 0)
                     {
                         matrixStack.push();
 
@@ -57,7 +55,7 @@ public class DryingRackRenderer extends TileEntityRenderer<DryingRackTileEntity>
                         matrixStack.pop();
                     }
 
-                    case 1:
+                    if(slot == 1)
                     {
                         matrixStack.push();
 
@@ -71,7 +69,7 @@ public class DryingRackRenderer extends TileEntityRenderer<DryingRackTileEntity>
                         matrixStack.pop();
                     }
 
-                    case 2:
+                    if(slot == 2)
                     {
                         matrixStack.push();
 
@@ -85,7 +83,7 @@ public class DryingRackRenderer extends TileEntityRenderer<DryingRackTileEntity>
                         matrixStack.pop();
                     }
 
-                    case 3:
+                    if(slot == 3)
                     {
                         matrixStack.push();
 
@@ -98,7 +96,6 @@ public class DryingRackRenderer extends TileEntityRenderer<DryingRackTileEntity>
 
                         matrixStack.pop();
                     }
-                }
             }
         }
     }

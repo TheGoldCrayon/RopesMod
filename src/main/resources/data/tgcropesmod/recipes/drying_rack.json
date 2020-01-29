@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FSF",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "F": {
+      "item": "tgcropesmod:fresh_flax"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tgcropesmod:drying_rack",
+    "count": 1
+  }
+}
