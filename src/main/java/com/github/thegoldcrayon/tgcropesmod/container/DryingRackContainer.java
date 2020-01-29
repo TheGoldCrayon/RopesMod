@@ -5,18 +5,14 @@ import com.github.thegoldcrayon.tgcropesmod.tileentity.DryingRackTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
-import net.minecraft.util.IntReferenceHolder;
 import net.minecraftforge.items.SlotItemHandler;
-import org.omg.CORBA.ObjectHolder;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 public class DryingRackContainer  extends Container
@@ -36,8 +32,15 @@ public class DryingRackContainer  extends Container
 
         //this.trackInt(new FunctionalIntReferenceHolder(() -> tileEntity.drying_time_left, v -> tileEntity.drying_time_left = (int) v));
 
-        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT, 56, 35));
-        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT, 116, 35));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT_1, 26, 13));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT_2, 62, 13));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT_3, 98, 13));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.INPUT_SLOT_4, 134, 13));
+
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT_1, 26, 57));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT_2, 62, 57));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT_3, 98, 57));
+        this.addSlot(new SlotItemHandler(tileEntity.inventory, DryingRackTileEntity.OUTPUT_SLOT_4, 134, 57));
 
         final int playerInventoryStartX = 8;
         final int playerInventoryStartY = 84;

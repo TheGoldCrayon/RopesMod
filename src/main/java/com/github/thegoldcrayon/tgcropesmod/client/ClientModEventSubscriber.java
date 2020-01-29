@@ -2,6 +2,7 @@ package com.github.thegoldcrayon.tgcropesmod.client;
 
 import com.github.thegoldcrayon.tgcropesmod.TGCRopesMod;
 import com.github.thegoldcrayon.tgcropesmod.client.gui.DryingRackScreen;
+import com.github.thegoldcrayon.tgcropesmod.client.renderer.DryingRackRenderer;
 import com.github.thegoldcrayon.tgcropesmod.init.ModBlocks;
 import com.github.thegoldcrayon.tgcropesmod.init.ModRegistry;
 import net.minecraft.client.gui.ScreenManager;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
@@ -34,5 +36,8 @@ public class ClientModEventSubscriber
         //Container Screens
         ScreenManager.registerFactory(ModRegistry.DRYING_RACK_CONTAINER_TYPE.get(), DryingRackScreen::new);
         LOGGER.debug("Completed Screen Renders");
+
+        //Tile Entity Renderers
+        ClientRegistry.bindTileEntityRenderer(ModRegistry.DRYING_RACK_TILE_ENTITY_TYPE.get(), DryingRackRenderer::new);
     }
 }
