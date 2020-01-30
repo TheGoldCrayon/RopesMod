@@ -52,7 +52,6 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
         final DryingRackTileEntity tileEntity = container.tileEntity;
         for(int slot = 0; slot <= DryingRackTileEntity.INPUT_SLOT_4; slot++)
         {
-            LOGGER.debug(tileEntity.dryingTimeLeft[slot]);
             if(tileEntity.dryingTimeLeft[slot] > 0)
             {
                 int sunHeight = getDryingTimeScaled(slot);
@@ -68,7 +67,6 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
         final DryingRackTileEntity tileEntity = this.container.tileEntity;
         final int dryingTimeLeft = tileEntity.dryingTimeLeft[slot];
         final int maxDryingTime = tileEntity.TIME_TO_DRY;
-        LOGGER.debug(dryingTimeLeft);
         if (tileEntity.dryingTimeLeft[slot] <= 0)
             return 0;
         else
