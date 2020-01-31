@@ -59,8 +59,8 @@ public class DryingRackBlock extends HorizontalBlock
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        Direction direction = state.get(FACING);
-        if(direction == Direction.NORTH||direction == Direction.SOUTH)
+        Direction facing = state.get(FACING);
+        if(facing == Direction.NORTH||facing == Direction.SOUTH)
             return SHAPE_NORTH_SOUTH;
         else
             return SHAPE_EAST_WEST;

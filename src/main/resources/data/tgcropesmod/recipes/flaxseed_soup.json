@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    " B ",
+    " W "
+  ],
+  "key": {
+    "S": {
+      "item": "tgcropesmod:flax_seeds"
+    },
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "tgcropesmod:rope",
+    "count": 2
+  }
+}

@@ -31,71 +31,125 @@ public class DryingRackRenderer extends TileEntityRenderer<DryingRackTileEntity>
     @Override
     public void render(DryingRackTileEntity tileEntity, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay)
     {
-        for(int slot = 0; slot <= DryingRackTileEntity.INPUT_SLOT_4; slot++) {
+        for(int slot = DryingRackTileEntity.OUTPUT_SLOT_1; slot <= DryingRackTileEntity.OUTPUT_SLOT_4; slot++)
+        {
             ItemStack stack = tileEntity.inventory.getStackInSlot(slot);
+            ItemStack stack2 = tileEntity.inventory.getStackInSlot(slot - 4);
 
             if (!stack.isEmpty())
             {
                 BlockState state = tileEntity.getBlockState();
                 Direction facing = state.get(DryingRackBlock.FACING);
                 float yRotation = getRotation(facing);
-                Quaternion rot2 = Vector3f.YP.rotationDegrees(yRotation);
+                Quaternion rotation = Vector3f.YP.rotationDegrees(yRotation);
+                double startX = 0.42;
+                double yCoord = 0.63;
+                double startZ = 0.215;
+                double spacing = 0.19;
+                double relStartX, relStartZ, xCoord, zCoord;
 
-                    if(slot == 0)
+                matrixStack.push();
+
+                if(facing == Direction.NORTH)
+                {
+                    relStartX = 1;
+                    relStartZ = 0;
+
+                    xCoord = relStartX - (startZ + ((slot - 4) * spacing));
+                    zCoord = relStartZ + startX;
+                }
+                else if(facing == Direction.SOUTH)
+                {
+                    relStartX = 0;
+                    relStartZ = 1;
+
+                    xCoord = relStartX + (startZ + ((slot - 4) * spacing));
+                    zCoord = relStartZ - startX;
+                }
+                else if(facing == Direction.EAST)
+                {
+                    relStartX = 1;
+                    relStartZ = 1;
+
+                    xCoord = relStartX - startX;
+                    zCoord = relStartZ - (startZ + ((slot - 4) * spacing));
+                }
+                else
+                {
+                    relStartX = 0;
+                    relStartZ = 0;
+
+                    xCoord = relStartX + startX;
+                    zCoord = relStartZ + (startZ + ((slot - 4) * spacing));
+                }
+
+                matrixStack.translate(xCoord, yCoord, zCoord);
+                matrixStack.scale(0.5f, 0.5f, 0.5f);
+                matrixStack.rotate(rotation);
+                ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+                IBakedModel model = itemRenderer.getItemModelWithOverrides(stack, tileEntity.getWorld(), null);
+                itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStack, buffer, combinedLight, combinedOverlay, model);
+
+                matrixStack.pop();
+            }
+            else
+            {
+                if (!stack2.isEmpty())
+                {
+                    BlockState state = tileEntity.getBlockState();
+                    Direction facing = state.get(DryingRackBlock.FACING);
+                    float yRotation = getRotation(facing);
+                    Quaternion rotation = Vector3f.YP.rotationDegrees(yRotation);
+                    double startX = 0.42;
+                    double yCoord = 0.63;
+                    double startZ = 0.215;
+                    double spacing = 0.19;
+                    double relStartX, relStartZ, xCoord, zCoord;
+
+                    matrixStack.push();
+
+                    if (facing == Direction.NORTH)
                     {
-                        matrixStack.push();
+                        relStartX = 1;
+                        relStartZ = 0;
 
-                        matrixStack.translate(0.42, 0.63, 0.215);
-                        matrixStack.scale(0.5f, 0.5f, 0.5f);
-                        matrixStack.rotate(rot2);
-                        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-                        IBakedModel model = itemRenderer.getItemModelWithOverrides(stack, tileEntity.getWorld(), null);
-                        itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStack, buffer, combinedLight, combinedOverlay, model);
+                        xCoord = relStartX - (startZ + ((slot - 4) * spacing));
+                        zCoord = relStartZ + startX;
+                    }
+                    else if (facing == Direction.SOUTH)
+                    {
+                        relStartX = 0;
+                        relStartZ = 1;
 
-                        matrixStack.pop();
+                        xCoord = relStartX + (startZ + ((slot - 4) * spacing));
+                        zCoord = relStartZ - startX;
+                    }
+                    else if (facing == Direction.EAST)
+                    {
+                        relStartX = 1;
+                        relStartZ = 1;
+
+                        xCoord = relStartX - startX;
+                        zCoord = relStartZ - (startZ + ((slot - 4) * spacing));
+                    }
+                    else
+                    {
+                        relStartX = 0;
+                        relStartZ = 0;
+
+                        xCoord = relStartX + startX;
+                        zCoord = relStartZ + (startZ + ((slot - 4) * spacing));
                     }
 
-                    if(slot == 1)
-                    {
-                        matrixStack.push();
+                    matrixStack.translate(xCoord, yCoord, zCoord);
+                    matrixStack.scale(0.5f, 0.5f, 0.5f);
+                    matrixStack.rotate(rotation);
+                    ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+                    IBakedModel model = itemRenderer.getItemModelWithOverrides(stack2, tileEntity.getWorld(), null);
+                    itemRenderer.renderItem(stack2, ItemCameraTransforms.TransformType.FIXED, true, matrixStack, buffer, combinedLight, combinedOverlay, model);
 
-                        matrixStack.translate(0.42, 0.63, 0.41);
-                        matrixStack.scale(0.5f, 0.5f, 0.5f);
-                        matrixStack.rotate(rot2);
-                        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-                        IBakedModel model = itemRenderer.getItemModelWithOverrides(stack, tileEntity.getWorld(), null);
-                        itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStack, buffer, combinedLight, combinedOverlay, model);
-
-                        matrixStack.pop();
-                    }
-
-                    if(slot == 2)
-                    {
-                        matrixStack.push();
-
-                        matrixStack.translate(0.42, 0.63, 0.595);
-                        matrixStack.scale(0.5f, 0.5f, 0.5f);
-                        matrixStack.rotate(rot2);
-                        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-                        IBakedModel model = itemRenderer.getItemModelWithOverrides(stack, tileEntity.getWorld(), null);
-                        itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStack, buffer, combinedLight, combinedOverlay, model);
-
-                        matrixStack.pop();
-                    }
-
-                    if(slot == 3)
-                    {
-                        matrixStack.push();
-
-                        matrixStack.translate(0.42, 0.63, 0.78);
-                        matrixStack.scale(0.5f, 0.5f, 0.5f);
-                        matrixStack.rotate(rot2);
-                        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-                        IBakedModel model = itemRenderer.getItemModelWithOverrides(stack, tileEntity.getWorld(), null);
-                        itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStack, buffer, combinedLight, combinedOverlay, model);
-
-                        matrixStack.pop();
-                    }
+                    matrixStack.pop();
+                }
             }
         }
     }

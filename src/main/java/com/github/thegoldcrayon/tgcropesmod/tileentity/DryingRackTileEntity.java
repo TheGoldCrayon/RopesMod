@@ -124,13 +124,11 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
                     else if (dryingTimeLeft[slot] > 0)
                     {
                         dryingTimeLeft[slot]--;
-                        LOGGER.debug("Tick tock in slot " + slot + " drying time left: " + dryingTimeLeft[slot]);
                         if (dryingTimeLeft[slot] == 0)
                         {
                             input.shrink(1);
                             inventory.insertItem(slot + 4, result, false);
                             dryingTimeLeft[slot] = -1;
-                            //LOGGER.debug("Drying in slot " + slot + " is done");
                         }
                     }
                 }
