@@ -5,14 +5,19 @@ import com.github.thegoldcrayon.tgcropesmod.block.DryingRackBlock;
 import com.github.thegoldcrayon.tgcropesmod.block.FlaxCropBlock;
 import com.github.thegoldcrayon.tgcropesmod.block.RopeBlock;
 import com.github.thegoldcrayon.tgcropesmod.container.DryingRackContainer;
+import com.github.thegoldcrayon.tgcropesmod.entity.RopeArrowEntity;
+import com.github.thegoldcrayon.tgcropesmod.item.RopeArrow;
 import com.github.thegoldcrayon.tgcropesmod.tileentity.DryingRackTileEntity;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.SoupItem;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -25,11 +30,14 @@ public class ModRegistry
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, TGCRopesMod.MODID);
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.TILE_ENTITIES, TGCRopesMod.MODID);
     public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPES = new DeferredRegister<>(ForgeRegistries.CONTAINERS, TGCRopesMod.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, TGCRopesMod.MODID);
 
 
     //Blocks
     public static final RegistryObject<Block> ROPE = BLOCKS.register("rope", () -> new RopeBlock());
     public static final RegistryObject<Block> FLAX_CROP = BLOCKS.register("flax_crop", () -> new FlaxCropBlock());
+
+    //Tile Entities
     public static final RegistryObject<Block> DRYING_RACK = BLOCKS.register("drying_rack", () -> new DryingRackBlock());
 
     //Items
@@ -39,6 +47,7 @@ public class ModRegistry
     public static final RegistryObject<Item> ROPE_ITEM = ITEMS.register("rope", () -> new BlockItem(ROPE.get(), new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<Item> DRYING_RACK_ITEM = ITEMS.register("drying_rack", () -> new BlockItem(DRYING_RACK.get(), new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<Item> FLAXSEED_SOUP = ITEMS.register("flaxseed_soup", () -> new SoupItem(new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP).food(ModFoods.FLAXSEED_SOUP).maxStackSize(1)));
+    public static final RegistryObject<Item> ROPE_ARROW_ITEM = ITEMS.register("rope_arrow", () -> new RopeArrow());
 
     //Tile Entity Types
     public static final RegistryObject<TileEntityType<DryingRackTileEntity>> DRYING_RACK_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register("drying_rack", () -> TileEntityType.Builder.create(DryingRackTileEntity::new, DRYING_RACK.get()).build(null));
@@ -46,9 +55,14 @@ public class ModRegistry
     //Container Types
     public static final RegistryObject<ContainerType<DryingRackContainer>> DRYING_RACK_CONTAINER_TYPE = CONTAINER_TYPES.register("drying_rack", () -> IForgeContainerType.create(DryingRackContainer::new));
 
-    //Tile Entities
-
-    //Containers
+    //Entity Types
+    public static final RegistryObject<EntityType<RopeArrowEntity>> ROPE_ARROW_ENTITY_TYPE = ENTITY_TYPES.register("rope_arrow", () ->
+            EntityType.Builder
+            .<RopeArrowEntity>create(RopeArrowEntity::new, EntityClassification.MISC)
+            .size(0.5f, 0.5f)
+            .setCustomClientFactory(RopeArrowEntity::new)
+            .build(new ResourceLocation(TGCRopesMod.MODID, "rope_arrow").toString())
+    );
 
     public static void register()
     {
@@ -56,5 +70,6 @@ public class ModRegistry
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         CONTAINER_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 }
