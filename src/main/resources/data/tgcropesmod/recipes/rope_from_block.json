@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tgcropesmod:block_of_rope"
+    }
+  ],
+  "result": {
+    "item": "tgcropesmod:rope",
+    "count": 9
+  }
+}

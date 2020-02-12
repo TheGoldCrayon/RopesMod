@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "tgcropesmod:block/block_of_rope_top",
+    "side": "tgcropesmod:block/block_of_rope_side"
+  }
+}

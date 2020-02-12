@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "RRR",
+    "RRR"
+  ],
+  "key": {
+    "R": {
+      "item": "tgcropesmod:rope"
+    }
+  },
+  "result": {
+    "item": "tgcropesmod:block_of_rope",
+    "count": 1
+  }
+}
