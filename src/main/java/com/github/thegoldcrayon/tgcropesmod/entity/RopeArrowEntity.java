@@ -44,6 +44,7 @@ public class RopeArrowEntity extends ArrowEntity
             //once this no longer crashes, set up rope so that it checks the face of the block it lands on.
             // if valid, place rope all the way down until can't place more, or player runs out of rope in inventory.
             // must use rope from player's inv.
+            super.tick();
         }
     }
 

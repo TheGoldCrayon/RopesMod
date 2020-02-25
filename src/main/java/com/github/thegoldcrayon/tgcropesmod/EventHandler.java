@@ -23,6 +23,6 @@ public class EventHandler
         if(event.getName().equals(grass))
             event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(newTable)).build());
 
-        LOGGER.debug("Loaded loot table additions");
+        //LOGGER.debug("Loaded loot table additions");
     }
 }
