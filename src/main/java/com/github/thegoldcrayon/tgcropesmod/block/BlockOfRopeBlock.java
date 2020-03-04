@@ -1,10 +1,11 @@
 package com.github.thegoldcrayon.tgcropesmod.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-public class BlockOfRopeBlock extends Block
+public class BlockOfRopeBlock extends RotatedPillarBlock
 {
     public BlockOfRopeBlock()
     {

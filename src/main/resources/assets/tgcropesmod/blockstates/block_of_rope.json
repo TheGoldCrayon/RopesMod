@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "tgcropesmod:block/block_of_rope" }
+    "axis=y": { "model": "tgcropesmod:block/block_of_rope" },
+    "axis=z": { "model": "tgcropesmod:block/block_of_rope", "x": 90 },
+    "axis=x": { "model": "tgcropesmod:block/block_of_rope", "x": 90, "y": 90 }
   }
 }
