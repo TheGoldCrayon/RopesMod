@@ -21,7 +21,7 @@ public class EventHandler
     public static void onLootLoad(LootTableLoadEvent event)
     {
         if(event.getName().equals(grass))
-            event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(newTable)).build());
+            event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(newTable)).name(TGCRopesMod.MODID + ":grass").build());
 
         //LOGGER.debug("Loaded loot table additions");
     }
