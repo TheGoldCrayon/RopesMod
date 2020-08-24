@@ -21,15 +21,18 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
         super(container, inventory, title);
     }
 
-    //I think this is the unmapped name for render(), now with a matrixstack
-    // 1 is matrixStack, 2 is partialTicks, 3 is mouseX, 4 is mouseY
-    //230430 is render, 230450 is renderBackground
+    /*
+    230430 is render()
+    230450 is drawGuiContainerBackgroundLayer()
+    230446, 230651 is renderBackground()
+    230459 is renderHoveredToolTip()
+    */
     @Override
-    protected void func_230450_a_(final MatrixStack matrixStack, final float partialTicks, final int mouseX, final int mouseY)
+    public void func_230430_a_(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
     {
-        this.func_230450_a_(matrixStack, partialTicks, mouseX, mouseY);
+        this.func_230446_a_(matrixStack);
         super.func_230430_a_(matrixStack, mouseX, mouseY, partialTicks);
-        this.func_230459_a_(matrixStack, mouseX, mouseY); //renderHoveredToolTip
+        this.func_230459_a_(matrixStack, mouseX, mouseY);
 
         int relMouseX = mouseX - this.guiLeft;
         int relMouseY = mouseY - this.guiTop;
@@ -37,7 +40,7 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
         final DryingRackTileEntity tileEntity = this.container.tileEntity;
     }
 
-    /* OLD OLD
+    /* OLD
     @Override
     public void render(final int mouseX, final int mouseY, final float partialTicks)
     {
@@ -56,9 +59,8 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
     }
     */
 
-    /* Have to figure out the unmapped func for below
     @Override
-    protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY)
+    protected void func_230450_a_(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) //protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY)
     {
         RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f);
         getMinecraft().getTextureManager().bindTexture(BACKGROUND_TEXTURE);
@@ -67,9 +69,10 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
         int startY = this.guiTop;
         int xBetweenSuns = 36;
 
-        //blit is now 238466_a_, with args (mat, int, int, int, int, f, f, int, int, int, int)
+        //blit is now func_238474_b_()
+
         //this.func_238466_a_(matrixStack, startX, startY, 0, 0, this.xSize, this.ySize);
-        this.func_238466_a_(matrixStack, startX, startY, 0, 0, 0.0f, 0.0f, this.xSize, this.ySize, 120, 120);
+        this.func_238474_b_(matrixStack, startX, startY, 0, 0, this.xSize, this.ySize);
 
         final DryingRackTileEntity tileEntity = container.tileEntity;
         for(int slot = 0; slot <= DryingRackTileEntity.INPUT_SLOT_4; slot++)
@@ -79,11 +82,11 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
                 int sunHeight = getDryingTimeScaled(slot);
 
                 //this.func_238466_a_(matrixStack, startX + 25 + (xBetweenSuns * slot), startY + 53 - sunHeight, 176, 21 - sunHeight, 21, sunHeight);
-                this.func_238466_a_(matrixStack, startX + 25 + (xBetweenSuns * slot), startY + 53 - sunHeight, 176, 21 - sunHeight, 0.0f, 0.0f, 21, sunHeight, 120, 120);
+                this.func_238474_b_(matrixStack, startX + 25 + (xBetweenSuns * slot), startY + 53 - sunHeight, 176, 21 - sunHeight, 21, sunHeight);
             }
         }
     }
-    */
+
 
     private int getDryingTimeScaled(int slot)
     {
