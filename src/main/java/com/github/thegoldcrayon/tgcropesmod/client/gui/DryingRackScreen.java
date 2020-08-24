@@ -71,7 +71,6 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
 
         //blit is now func_238474_b_()
 
-        //this.func_238466_a_(matrixStack, startX, startY, 0, 0, this.xSize, this.ySize);
         this.func_238474_b_(matrixStack, startX, startY, 0, 0, this.xSize, this.ySize);
 
         final DryingRackTileEntity tileEntity = container.tileEntity;
@@ -80,8 +79,7 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
             if(tileEntity.dryingTimeLeft[slot] > 0)
             {
                 int sunHeight = getDryingTimeScaled(slot);
-
-                //this.func_238466_a_(matrixStack, startX + 25 + (xBetweenSuns * slot), startY + 53 - sunHeight, 176, 21 - sunHeight, 21, sunHeight);
+                LOGGER.debug(sunHeight);
                 this.func_238474_b_(matrixStack, startX + 25 + (xBetweenSuns * slot), startY + 53 - sunHeight, 176, 21 - sunHeight, 21, sunHeight);
             }
         }

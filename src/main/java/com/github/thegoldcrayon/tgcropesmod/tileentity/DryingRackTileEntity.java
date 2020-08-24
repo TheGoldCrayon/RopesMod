@@ -3,6 +3,7 @@ package com.github.thegoldcrayon.tgcropesmod.tileentity;
 import com.github.thegoldcrayon.tgcropesmod.container.DryingRackContainer;
 import com.github.thegoldcrayon.tgcropesmod.init.ModRegistry;
 import com.github.thegoldcrayon.tgcropesmod.init.ModTileEntityTypes;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -161,14 +162,14 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
         return super.getCapability(cap, side);
     }
 
-    /* Gotta figure this out too. 
+    // func_230337_a_ is read
     @Override
-    public void read(final CompoundNBT compound)
+    public void func_230337_a_(final BlockState blockState, final CompoundNBT compound)
     {
-        super.read(compound);
+        super.func_230337_a_(blockState, compound);
         this.inventory.deserializeNBT(compound.getCompound(INVENTORY_TAG));
     }
-    */
+
 
     @Override
     public CompoundNBT write(final CompoundNBT compound)
