@@ -56,7 +56,8 @@ public class RopeArrowEntity extends ArrowEntity
         }*/
         if(this.inGround)
         {
-            BlockPos position = this.getPosition();
+            //BlockPos position = this.getPosition();
+            BlockPos position = this.func_233580_cy_();
             Block checkBlock = world.getBlockState(position.up()).getBlock();
             int maxRopeUsable = 27;
             if(!(checkBlock == Blocks.AIR) && world.getBlockState(position).getBlock() == Blocks.AIR)

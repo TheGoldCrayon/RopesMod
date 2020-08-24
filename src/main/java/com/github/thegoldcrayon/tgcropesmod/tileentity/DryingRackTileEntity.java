@@ -161,12 +161,14 @@ public class DryingRackTileEntity extends TileEntity implements ITickableTileEnt
         return super.getCapability(cap, side);
     }
 
+    /* Gotta figure this out too. 
     @Override
     public void read(final CompoundNBT compound)
     {
         super.read(compound);
         this.inventory.deserializeNBT(compound.getCompound(INVENTORY_TAG));
     }
+    */
 
     @Override
     public CompoundNBT write(final CompoundNBT compound)

@@ -29,7 +29,8 @@ public class ClientModEventSubscriber
     public static void onFMLClientSetupEvent(final FMLClientSetupEvent event)
     {
         //Misc. Renders
-        RenderType rendertype1 = RenderType.cutout();
+        //RenderType rendertype1 = RenderType.cutout();
+        RenderType rendertype1 = RenderType.getCutout();
 
         RenderTypeLookup.setRenderLayer(ModBlocks.ROPE, rendertype1);
         RenderTypeLookup.setRenderLayer(ModBlocks.FLAX_CROP, rendertype1);

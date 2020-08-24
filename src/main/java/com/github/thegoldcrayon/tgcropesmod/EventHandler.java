@@ -1,8 +1,9 @@
 package com.github.thegoldcrayon.tgcropesmod;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootPool;
-import net.minecraft.world.storage.loot.TableLootEntry;
+//import net.minecraft.world.storage.loot.LootPool;
+//import net.minecraft.world.storage.loot.TableLootEntry;
+import net.minecraft.loot.LootContext;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,8 +21,8 @@ public class EventHandler
     @SubscribeEvent
     public static void onLootLoad(LootTableLoadEvent event)
     {
-        if(event.getName().equals(grass))
-            event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(newTable)).build());
+        //if(event.getName().equals(grass))
+            //event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(newTable)).build());
 
         //LOGGER.debug("Loaded loot table additions");
     }

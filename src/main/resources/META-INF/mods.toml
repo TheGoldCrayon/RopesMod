@@ -7,6 +7,8 @@
 modLoader="javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
 loaderVersion="[31,)" #mandatory (28 is current forge version)
+# Apparently I gotta put a license here. /shrug
+license="I'll burn this bridge when I get to it."
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/TheGoldCrayon/RopesMod/issues" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
@@ -18,7 +20,7 @@ version="${version}" #mandatory
  # A display name for the mod
 displayName="Ropes Mod" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
-updateJSONURL="http://myurl.me/" #optional
+# updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/TheGoldCrayon/RopesMod/tree/1.15.1" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
@@ -29,7 +31,7 @@ credits="Thank you to the forge folks and everyone who helped me learn how to mo
 authors="TheGoldCrayon" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Adds climbable ropes
+Adds climbable ropes, among various other items and blocks
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
