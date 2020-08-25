@@ -13,6 +13,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -20,10 +21,13 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class RopeBlock extends LadderBlock
+import java.util.Random;
+
+public class RopeBlock extends ScaffoldingBlock //LadderBlock
 {
     protected static final VoxelShape ROPE = Block.makeCuboidShape(6.0d, 0.0d, 6.0d, 10.0d, 16.0d, 10.0d);
 
@@ -36,13 +40,28 @@ public class RopeBlock extends LadderBlock
                 .create(Material.WOOL)
                 .sound(SoundType.CLOTH)
                 .hardnessAndResistance(0.5f)
+                .doesNotBlockMovement()
+                .variableOpacity()
         );
     }
+
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
         return ROPE;
+    }
+
+    @Override
+    public VoxelShape getRaytraceShape(BlockState state, IBlockReader worldIn, BlockPos pos)
+    {
+        return ROPE;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
+    {
+        return VoxelShapes.fullCube();
     }
 
     @Override
@@ -104,6 +123,12 @@ public class RopeBlock extends LadderBlock
         }
         else
             return ActionResultType.FAIL;
+    }
+
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
+    {
+
     }
 
     /*@Override
