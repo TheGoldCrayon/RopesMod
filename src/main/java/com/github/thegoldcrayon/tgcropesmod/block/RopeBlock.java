@@ -53,15 +53,9 @@ public class RopeBlock extends ScaffoldingBlock //LadderBlock
     }
 
     @Override
-    public VoxelShape getRaytraceShape(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        return ROPE;
-    }
-
-    @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        return VoxelShapes.fullCube();
+        return VoxelShapes.empty();
     }
 
     @Override
