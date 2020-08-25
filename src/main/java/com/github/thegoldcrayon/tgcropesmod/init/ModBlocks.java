@@ -2,6 +2,7 @@ package com.github.thegoldcrayon.tgcropesmod.init;
 
 import com.github.thegoldcrayon.tgcropesmod.TGCRopesMod;
 import com.github.thegoldcrayon.tgcropesmod.block.DryingRackBlock;
+import com.github.thegoldcrayon.tgcropesmod.block.FlaxBushBlock;
 import com.github.thegoldcrayon.tgcropesmod.block.FlaxCropBlock;
 import com.github.thegoldcrayon.tgcropesmod.block.RopeBlock;
 import net.minecraftforge.registries.ObjectHolder;
@@ -18,4 +19,7 @@ public class ModBlocks
 
     @ObjectHolder("drying_rack")
     public static DryingRackBlock DRYING_RACK;
+
+    @ObjectHolder("flax_bush")
+    public static FlaxBushBlock FLAX_BUSH;
 }

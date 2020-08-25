@@ -34,6 +34,7 @@ public class ClientModEventSubscriber
 
         RenderTypeLookup.setRenderLayer(ModBlocks.ROPE, rendertype1);
         RenderTypeLookup.setRenderLayer(ModBlocks.FLAX_CROP, rendertype1);
+        RenderTypeLookup.setRenderLayer(ModBlocks.FLAX_BUSH, rendertype1);
         LOGGER.debug("Completed Misc. Renders");
 
         //Container Screens

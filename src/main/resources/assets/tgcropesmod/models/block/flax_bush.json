@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "tgcropesmod:block/flax_bush"
+  }
+}

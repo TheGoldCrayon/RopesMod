@@ -1,10 +1,7 @@
 package com.github.thegoldcrayon.tgcropesmod.init;
 
 import com.github.thegoldcrayon.tgcropesmod.TGCRopesMod;
-import com.github.thegoldcrayon.tgcropesmod.block.BlockOfRopeBlock;
-import com.github.thegoldcrayon.tgcropesmod.block.DryingRackBlock;
-import com.github.thegoldcrayon.tgcropesmod.block.FlaxCropBlock;
-import com.github.thegoldcrayon.tgcropesmod.block.RopeBlock;
+import com.github.thegoldcrayon.tgcropesmod.block.*;
 import com.github.thegoldcrayon.tgcropesmod.container.DryingRackContainer;
 import com.github.thegoldcrayon.tgcropesmod.entity.RopeArrowEntity;
 import com.github.thegoldcrayon.tgcropesmod.item.RopeArrow;
@@ -38,6 +35,7 @@ public class ModRegistry
     public static final RegistryObject<Block> ROPE = BLOCKS.register("rope", () -> new RopeBlock());
     public static final RegistryObject<Block> FLAX_CROP = BLOCKS.register("flax_crop", () -> new FlaxCropBlock());
     public static final RegistryObject<Block> BLOCK_OF_ROPE = BLOCKS.register("block_of_rope", () -> new BlockOfRopeBlock());
+    public static final RegistryObject<Block> FLAX_BUSH = BLOCKS.register("flax_bush", () -> new FlaxBushBlock());
 
     //Tile Entities
     public static final RegistryObject<Block> DRYING_RACK = BLOCKS.register("drying_rack", () -> new DryingRackBlock());
@@ -51,6 +49,7 @@ public class ModRegistry
     public static final RegistryObject<Item> FLAXSEED_SOUP = ITEMS.register("flaxseed_soup", () -> new SoupItem(new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP).food(ModFoods.FLAXSEED_SOUP).maxStackSize(1)));
     public static final RegistryObject<Item> ROPE_ARROW_ITEM = ITEMS.register("rope_arrow", () -> new RopeArrow());
     public static final RegistryObject<Item> BLOCK_OF_ROPE_ITEM = ITEMS.register("block_of_rope", () -> new BlockItem(BLOCK_OF_ROPE.get(), new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP)));
+    public static final RegistryObject<Item> FLAX_BUSH_ITEM = ITEMS.register("flax_bush", () -> new BlockItem(FLAX_BUSH.get(), new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP)));
 
     //Tile Entity Types
     public static final RegistryObject<TileEntityType<DryingRackTileEntity>> DRYING_RACK_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register("drying_rack", () -> TileEntityType.Builder.create(DryingRackTileEntity::new, DRYING_RACK.get()).build(null));
