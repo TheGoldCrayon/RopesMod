@@ -43,8 +43,10 @@ public class ClientModEventSubscriber
 
         //Tile Entity Renderers
         ClientRegistry.bindTileEntityRenderer(ModRegistry.DRYING_RACK_TILE_ENTITY_TYPE.get(), DryingRackRenderer::new);
+        LOGGER.debug("Completed Tile Entity Renderers");
 
         //Entity Renderers
         RenderingRegistry.registerEntityRenderingHandler(ModRegistry.ROPE_ARROW_ENTITY_TYPE.get(), RopeArrowRenderer::new);
+        LOGGER.debug("Completed Entity Renderers");
     }
 }

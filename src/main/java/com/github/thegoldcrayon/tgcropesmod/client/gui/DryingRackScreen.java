@@ -79,7 +79,7 @@ public class DryingRackScreen extends ContainerScreen<DryingRackContainer>
             if(tileEntity.dryingTimeLeft[slot] > 0)
             {
                 int sunHeight = getDryingTimeScaled(slot);
-                LOGGER.debug(sunHeight);
+                //LOGGER.debug(sunHeight);
                 this.func_238474_b_(matrixStack, startX + 25 + (xBetweenSuns * slot), startY + 53 - sunHeight, 176, 21 - sunHeight, 21, sunHeight);
             }
         }
