@@ -1,0 +1,13 @@
+{
+  "item.tgcropesmod.flax_seeds": "Семена льна",
+  "item.tgcropesmod.dry_flax": "Сушёный лён",
+  "item.tgcropesmod.fresh_flax": "Свежий лён",
+  "item.tgcropesmod.rope_arrow": "Стрела с верёвкой",
+  "item.tgcropesmod.flaxseed_soup": "Суп из Семян льна",
+  "block.tgcropesmod.flax_bush": "Куст льна",
+  "block.tgcropesmod.rope": "Верёвка",
+  "block.tgcropesmod.flax_crop": "Лён",
+  "block.tgcropesmod.drying_rack": "Стойка для Сушки",
+  "block.tgcropesmod.block_of_rope": "Блок верёвки",
+  "itemGroup.tgcropesmod": "Ropes Mod"
+}
